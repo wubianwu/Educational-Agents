@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>代码核心 - 智能摸底测试</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="page-container assessment-container">
+
+    <div id="step-intro" class="assessment-step active">
+      <div class="card">
+        <i class="fas fa-tasks" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 1rem;"></i>
+        <h2>智能摸底测试</h2>
+        <p style="color: var(--text-secondary); margin: 1rem 0 2rem 0;">
+          准备好了吗？我们将通过约15道自适应题目，快速评估你对四门核心课程的掌握情况，并为你生成专属的学习蓝图。
+        </p>
+        <button id="begin-test-btn" class="btn btn-primary">开始测试</button>
+      </div>
+    </div>
+
+    <div id="step-question" class="assessment-step">
+      <div class="card">
+        <p style="color: var(--text-secondary);">自适应摸底测试 (第 <span id="question-number">1</span> / ~15 题)</p>
+        <div class="progress-bar">
+          <div id="progress-bar-inner" class="progress-bar-inner"></div>
+        </div>
+        <h3 class="question-text">在一个采用分页式存储管理的系统中，页表存放在内存中。一个逻辑地址到物理地址的转换，需要访问几次内存？</h3>
+        <div class="options-grid">
+          <button class="option-btn">A. 一次</button>
+          <button class="option-btn">B. 两次</button>
+          <button class="option-btn">C. 三次</button>
+          <button class="option-btn">D. 不确定</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="step-report" class="assessment-step">
+      <div class="card">
+        <i class="fas fa-chart-pie" style="font-size: 3rem; color: var(--success); margin-bottom: 1rem;"></i>
+        <h2>能力评估报告</h2>
+        <p style="color: var(--text-secondary);">恭喜你完成测试！这是我们根据你的表现生成的初步能力雷达图。</p>
+        <div class="radar-chart-container"><canvas id="assessment-radar-chart"></canvas></div>
+        <a href="dashboard.html" class="btn btn-primary">生成我的个性化学习路径 <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const steps = document.querySelectorAll('.assessment-step')
+    const beginBtn = document.getElementById('begin-test-btn')
+    const optionBtns = document.querySelectorAll('.option-btn')
+    let currentStep = 0
+    let questionCount = 0
+
+    function showStep (index) {
+      steps.forEach(step => step.classList.remove('active'))
+      steps[index].classList.add('active')
+    }
+
+    beginBtn.addEventListener('click', () => {
+      currentStep = 1
+      questionCount = 1
+      document.getElementById('question-number').innerText = questionCount
+      document.getElementById('progress-bar-inner').style.width = (questionCount / 15 * 100) + '%'
+      showStep(currentStep)
+    })
+
+    optionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (questionCount < 3) { // 模拟做3道题
+          questionCount++
+          document.getElementById('question-number').innerText = questionCount
+          document.getElementById('progress-bar-inner').style.width = (questionCount / 15 * 100) + '%'
+          // 在此可以更新题目内容
+        } else {
+          currentStep = 2
+          showStep(currentStep)
+          renderRadarChart()
+        }
+      })
+    })
+
+    function renderRadarChart () {
+      const ctx = document.getElementById('assessment-radar-chart').getContext('2d')
+      new Chart(ctx, {
+        type: 'radar', /* ... Chart.js config from previous response ... */
+        data: { labels: ['数据结构-树&图', '计网-TCP/IP', '操作系统-内存管理', '计组-指令系统', '数据结构-排序', '操作系统-进程调度'], datasets: [{ label: '我的掌握程度', data: [65, 59, 40, 81, 92, 35], backgroundColor: 'rgba(0, 191, 255, 0.2)', borderColor: 'rgba(0, 191, 255, 1)', pointBackgroundColor: 'rgba(0, 191, 255, 1)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgba(0, 191, 255, 1)' }] },
+        options: { responsive: true, maintainAspectRatio: false, scales: { r: { beginAtZero: true, max: 100, angleLines: { color: 'rgba(255, 255, 255, 0.2)' }, grid: { color: 'rgba(255, 255, 255, 0.2)' }, pointLabels: { color: 'white', font: { size: 12 } }, ticks: { color: 'white', backdropColor: 'rgba(0,0,0,0.5)', stepSize: 20 } } }, plugins: { legend: { labels: { color: 'white' } } } }
+      })
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>代码核心 - 学习仪表盘</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="page-container main-content">
+    <header class="dashboard-header">
+      <div class="user-greeting">
+        <span>你好，</span>
+        <h2>奋斗者 小成</h2>
+      </div>
+      <i class="fas fa-bell" style="font-size: 1.5rem; color: var(--text-secondary); cursor: pointer;"></i>
+    </header>
+
+    <div class="learning-path-card">
+      <h3><i class="fas fa-road" style="margin-right: 10px;"></i> 你的学习路径</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">AI已根据你的知识薄弱点，为你规划了最高效的学习任务。</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <div class="task-icon learn">学</div>
+          <div class="task-details">
+            <p>阅读“进程与线程”核心概念卡片</p><span>操作系统 > 进程管理</span>
+          </div>
+          <button class="btn btn-secondary">开始学习</button>
+        </li>
+        <li class="task-item">
+          <div class="task-icon practice">练</div>
+          <div class="task-details">
+            <p>3道“进程状态转换”选择题</p><span>操作系统 > 进程管理</span>
+          </div>
+          <button class="btn btn-secondary" disabled>待解锁</button>
+        </li>
+        <li class="task-item">
+          <div class="task-icon watch">看</div>
+          <div class="task-details">
+            <p>观看“非抢占式调度算法”动画讲解</p><span>操作系统 > 进程管理</span>
+          </div>
+          <button class="btn btn-secondary" disabled>待解锁</button>
+        </li>
+        <li class="task-item completed">
+          <div class="task-icon learn"><i class="fas fa-check"></i></div>
+          <div class="task-details">
+            <p>阅读“数据结构基本概念”</p><span>数据结构 > 绪论</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <a href="dashboard.html" class="nav-item active"><i class="fas fa-home"></i><span>学习</span></a>
+    <a href="nebula.html" class="nav-item"><i class="fas fa-star-of-david"></i><span>星云</span></a>
+    <a href="q-a.html" class="nav-item"><i class="fas fa-comment-dots"></i><span>答疑</span></a>
+    <a href="profile.html" class="nav-item"><i class="fas fa-user"></i><span>我的</span></a>
+  </nav>
+
+</body>
+
+</html>

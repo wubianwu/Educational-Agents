@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>代码核心 - 虚拟教师</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div id="page-qa">
+    <header class="qa-header">
+      <h3><i class="fas fa-robot" style="color:var(--accent-secondary)"></i> 虚拟教师</h3>
+      <p style="font-size: 0.9rem; color: var(--text-secondary);">随时解答你的任何疑问</p>
+    </header>
+
+    <div class="chat-window">
+      <div class="chat-message ai">
+        <div class="avatar"><i class="fas fa-brain"></i></div>
+        <div class="message-content">你好！我是你的AI辅导老师。请问有什么可以帮到你？</div>
+      </div>
+      <div class="chat-message user">
+        <div class="avatar"><i class="fas fa-user"></i></div>
+        <div class="message-content">请用“黑板”给我演示一下TCP三次握手。</div>
+      </div>
+      <div class="chat-message ai">
+        <div class="avatar"><i class="fas fa-brain"></i></div>
+        <div class="message-content">
+          好的，请看黑板演示：
+          <div class="blackboard">
+            <h4><i class="fas fa-chalkboard-teacher"></i> 黑板演示：TCP三次握手</h4>
+            <div class="tcp-handshake-demo">
+              <div class="tcp-entity"><i class="fas fa-desktop"></i>
+                <p>客户端</p>
+              </div>
+              <div class="tcp-arrows">
+                <div class="tcp-arrow">
+                  <p>1. SYN (seq=x) →</p>
+                </div>
+                <div class="tcp-arrow ack">
+                  <p>← 2. ACK (ack=x+1), SYN (seq=y)</p>
+                </div>
+                <div class="tcp-arrow">
+                  <p>3. ACK (ack=y+1) →</p>
+                </div>
+              </div>
+              <div class="tcp-entity"><i class="fas fa-server"></i>
+                <p>服务器</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-bar">
+      <button class="btn"><i class="fas fa-microphone"></i></button>
+      <input type="text" placeholder="输入你的问题...">
+      <button class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i><span>学习</span></a>
+    <a href="nebula.html" class="nav-item"><i class="fas fa-star-of-david"></i><span>星云</span></a>
+    <a href="q-a.html" class="nav-item active"><i class="fas fa-comment-dots"></i><span>答疑</span></a>
+    <a href="profile.html" class="nav-item"><i class="fas fa-user"></i><span>我的</span></a>
+  </nav>
+
+</body>
+
+</html>
